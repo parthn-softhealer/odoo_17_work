@@ -1,0 +1,39 @@
+<odoo>
+    <record id="sh_topic_wizard_tree_view" model="ir.ui.view">
+        <field name="name">sh.topic.wizard.tree</field>
+        <field name="model">sh.topic.wizard</field>
+        <field name="arch" type="xml">
+            <tree string="Subject Topic">
+                <field name="topic_name"/>
+                <field name="topic_description"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="sh_topic_wizard_form_view" model="ir.ui.view">
+        <field name="name">sh.topic.wizard.form</field>
+        <field name="model">sh.topic.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Subject Topic">
+            
+                <sheet>
+                    
+                    <group>
+                        <field name="topic_name"/>
+                        <field name="topic_description"/>
+                    </group>
+                    
+                </sheet>
+            </form>
+        </field>
+    </record>  
+
+    <record id="sh_topic_wizard_action" model="ir.actions.act_window">
+        <field name="name">Subject Topic</field>
+        <field name="res_model">sh.topic.wizard</field>
+        <field name="view_mode">tree,form</field>
+        <field name="target">new</field>
+        <field name="view_id" ref="sh_topic_wizard_tree_view"/>
+        <field name="view_id" ref="sh_topic_wizard_form_view"/>
+    </record>
+</odoo>

@@ -1,0 +1,22 @@
+{
+    "name": "sh_school_management",
+    "version": "1.2",
+    "category": "course",
+    "summary": "sh_school_management",
+    "description": "This module contains all the common features of Sales Management and eCommerce.",
+    "depends": ["base", "mail"],
+    "data": [
+        "security/security_fee.xml",
+        "security/ir.model.access.csv",
+        "wizard/semi_wizard_view.xml",
+        "wizard/topic_wizard_view.xml",
+        "views/sh_course_view.xml",
+        "views/sh_student_view.xml",
+        "views/sh_teacher_view.xml",
+        # "views/sh_mix_view.xml",
+        # "views/sh_fees_view.xml",
+        # "views/sh_dupe_view.xml",
+    ],
+    "installable": True,
+    "application": True,
+}

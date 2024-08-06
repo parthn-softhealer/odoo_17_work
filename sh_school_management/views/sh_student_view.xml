@@ -1,0 +1,93 @@
+<odoo>
+    <record id="sh_student_tree" model="ir.ui.view">
+        <field name="name">sh.student.tree</field>
+        <field name="model">sh.student</field>
+        <field name="arch" type="xml">
+            <tree string="student Details">
+                <field name="student_id"/>
+                <field name="course_id"/>
+                <field name="teacher_id" />
+                <field name="identification_number" />
+                <!-- <field name="suggestTopic" /> -->
+
+
+
+            </tree>
+        </field>
+    </record>
+
+    <record id="sh_student_form" model="ir.ui.view">
+        <field name="name">sh.student.form</field>
+        <field name="model">sh.student</field>
+        <field name="arch" type="xml">
+            <form string="Course">
+
+                <sheet>
+                    <group>
+                        <field name="identification_number" invisible="1"/>
+                        <field name="student_id"/>
+                        <field name="student_mobile" />
+                        <field name="student_email"/>
+                        <field name="course_id"/>
+                        <field name="teacher_id" />
+                        <field name="suggestion" widget="many2many_tags" readonly="1"/>
+
+                        <!-- <field name="join_date" /> -->
+                        <field name="concate"/>
+                        <field name="suggestTopic" />
+
+                        <field name="attadance">
+                            <tree editable="bottom">
+                                <field name="check_in"></field>
+                                <field name="check_out"></field>
+                            </tree>
+                        </field>
+
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+
+                </div>
+                <!-- <div class="oe_chatter">
+                    <field name="message_ids" widget="mail_thread"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                </div> -->
+            </form>
+        </field>
+    </record>
+
+
+
+    <record id="action_view_student" model="ir.actions.act_window">
+        <field name="name">student</field>
+        <field name="res_model">sh.student</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <record id="test_cron" model="ir.cron">
+        <field name="name">Test Cron</field>
+        <field name="model_id" ref="model_sh_student"/>
+        <field name="state">code</field>
+        <field name="code">model.test_cron()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">minutes</field>
+        <field name="numbercall">10</field>
+    </record>
+
+
+    <record id="seq_my_model" model="ir.sequence">
+        <field name="name">My Model Sequence</field>
+        <field name="code">sh.student</field>
+        <field name="prefix">STU-</field>
+        <field name="padding">5</field>
+        <field name="number_next">1</field>
+        <field name="number_increment">1</field>
+    </record>
+
+
+    <menuitem id="sh_student" name="student" action="action_view_student" parent="sh_course" groups="sh_school_management.student_group" />
+</odoo> 

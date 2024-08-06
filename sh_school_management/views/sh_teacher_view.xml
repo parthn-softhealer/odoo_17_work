@@ -1,0 +1,57 @@
+<odoo>
+    <!-- tree / list view -->
+    <record id="sh_teacher_tree" model="ir.ui.view">
+        <field name="name">sh.teacher.tree</field>
+        <field name="model">sh.teacher</field>
+        <field name="arch" type="xml">
+            <tree string="teacher Details">
+                <field name="teacher_name"/>
+                <!-- <field name="teacher_name"/> -->
+
+                <field name="course_id" />
+
+            </tree>
+        </field>
+    </record>
+
+    <!-- form view -->
+    <record id="sh_teacher_form" model="ir.ui.view">
+        <field name="name">sh.teacher.form</field>
+        <field name="model">sh.teacher</field>
+        <field name="arch" type="xml">
+            <form string="teacher">
+                <sheet>
+
+                    <group>
+                        <field name="teacher_name"/>
+
+                        <field name="course_id" />
+                        <field name="attadance_ids">
+                            <tree editable="bottom">
+                                <field name="check_in"></field>
+                                <field name="check_out"></field>
+                            </tree>
+                        </field>
+
+                        <header>
+                            <button name="teacher" type="object" string="try" class="btn-warning"/>
+
+                        </header>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+
+    <!-- action definition -->
+    <record id="action_view_teacher" model="ir.actions.act_window">
+        <field name="name">teachers</field>
+        <field name="res_model">sh.teacher</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- menu item -->
+    <menuitem id="sh_teacher" name="teachers" action="action_view_teacher" parent="sh_course" groups="sh_school_management.teacher_group" />
+</odoo>

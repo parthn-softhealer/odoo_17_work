@@ -1,0 +1,41 @@
+<odoo>
+    <record id="sh_topic_semi_wizard_tree_view" model="ir.ui.view">
+        <field name="name">sh.topic.wizard.tree</field>
+        <field name="model">sh.semiwizard</field>
+        <field name="arch" type="xml">
+            <tree string="Subject Topic">
+                <field name="name"/>
+                <field name="course_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="sh_topic_semi_wizard_form_view" model="ir.ui.view">
+        <field name="name">sh.topic.wizard.form</field>
+        <field name="model">sh.semiwizard</field>
+        <field name="arch" type="xml">
+            <form string="Subject Topic">
+                <sheet>
+                    <!-- <header>
+                         <button  name="SemiWIzard" type="object" string="Object semi wizard" class="btn-danger"/>
+                        
+                    </header> -->
+                    <group>
+                        <field name="name"/>
+                        <field name="course_id"/>
+                       
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>  
+
+    <record id="sh_topic_semi_wizard_action" model="ir.actions.act_window">
+        <field name="name">Sub Topic</field>
+        <field name="res_model">sh.semiwizard</field>
+        <field name="view_mode">tree,form</field>
+        <field name="target">new</field>
+        <field name="view_id" ref="sh_topic_semi_wizard_tree_view"/>
+        <field name="view_id" ref="sh_topic_semi_wizard_form_view"/>
+    </record>
+</odoo>

@@ -1,0 +1,38 @@
+<odoo>
+    <record id="sh_fees_tree" model="ir.ui.view">
+        <field name="name">sh.fees.tree</field>
+        <field name="model">sh.fees</field>
+        <field name="arch" type="xml">
+            <tree string="fees Details">
+                <field name="student_id"/>
+                <field name="enroll"/>
+                <field name="subject" />
+                <field name="fees" />
+            </tree>
+        </field>
+    </record>
+    <record id="sh_fees_form" model="ir.ui.view">
+        <field name="name">sh.fees.form</field>
+        <field name="model">sh.fees</field>
+        <field name="arch" type="xml">
+            <form string="Course">
+                <sheet>
+                    <group>
+                        <field name="student_id"/>
+                        <field name="enroll"/>
+                        <field name="subject" />
+                        <field name="fees" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_view_fees" model="ir.actions.act_window">
+        <field name="name">fees</field>
+        <field name="res_model">sh.fees</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="sh_fees" name="fees" action="action_view_fees" parent="sh_course" groups="sh_school_management.student_group" />
+</odoo>

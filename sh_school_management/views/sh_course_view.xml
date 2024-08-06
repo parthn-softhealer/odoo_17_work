@@ -1,0 +1,127 @@
+<odoo>
+    <record id="sh_course_tree" model="ir.ui.view">
+        <field name="name">sh.course.tree</field>
+        <field name="model">sh.course</field>
+        <field name="arch" type="xml">
+            <tree string="Course Details">
+                <field name="course_name"/>
+                <field name="course_description"/>
+                <field name="start_date"/>
+                <field name="course_price"/>
+                <!-- <field name="max_student"/> -->
+
+                <!-- <field name="student_ids" widget="many2many_tags" readonly="1"/> -->
+                <field name="teacher_ids" widget="many2many_tags" />
+                <!-- <field name="num" widget="many2many_tags" readonly="1"/> -->
+                <!-- <field name="topic_ids" widget="many2many_tags" /> -->
+
+            </tree>
+        </field>
+    </record>
+
+    <record id="sh_course_form" model="ir.ui.view">
+        <field name="name">sh.course.form</field>
+        <field name="model">sh.course</field>
+        <field name="arch" type="xml">
+
+            <form string="Course">
+                <header>
+                    <!-- <button name="Max" type="object" string="Max" class="btn-success"/> -->
+                    <!-- <button name="ButtonObject" type="object" string="Object Button" class="btn-warning"/> -->
+                    <button name="%(sh_school_management.sh_topic_wizard_action)d" type="action" string="Action Button" class="btn-primary"/>
+
+                </header>
+                <sheet>
+
+                    <group>
+                        <field name="student_id"/>
+                        <field name="course_name"/>
+                        <field name="course_description"/>
+                        <field name="start_date"/>
+                        <field name="course_price"/>
+                        <field name="course_hours"/>
+                        <field name="max_student"/>
+                        <field name="student_ids" widget="many2many_tags" readonly="1" />
+                        <field name="teacher_ids" widget="many2many_tags" readonly="1"/>
+                        <!-- <field name="topic_ids" widget="many2many_tags"/> -->
+
+                        <!-- <field name="image"/> -->
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- <record id="course_view_kanban" model="ir.ui.view">
+        <field name="name">course.view.kanban</field>
+        <field name="model">sh.course</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <templates>
+                    <t t-name="kanban-box">
+                        <field name="image" widget="image" class="oe_avatar" options="{'size': (150, 150)}" />
+                            
+                        <div class="container">
+                            <strong class="text-center ">
+                                <div class="text-primary">
+                                    <field name="course_name" />
+                                </div>
+                                
+                           
+                                <div class="text-dark">
+                                     Date:  <field name="start_date" />
+                                </div>
+                            
+                                <div class="text-success">
+                                price:   <field name="course_price" />
+                                </div>
+                        </strong>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record> -->
+
+    <record id="sh_course_calendar" model="ir.ui.view">
+        <field name="name">sh.course.calendar</field>
+        <field name="model">sh.course</field>
+        <field name="arch" type="xml">
+            <calendar string="Courses" date_start="start_date">
+                <field name="course_name"/>
+            </calendar>
+        </field>
+    </record>
+
+    <!-- <record id="sh_course_graph" model="ir.ui.view">
+        <field name="name">sh.course.graph</field>
+        <field name="model">sh.course</field>
+        <field name="arch" type="xml">
+            <graph string="Courses" type="bar">
+                <field name="course_name" type="row"/>
+                <field name="course_price" type="measure"/>
+            </graph>
+        </field>
+    </record>  -->
+
+    <record id="sh_course_search" model="ir.ui.view">
+        <field name="name">sh_course_search</field>
+        <field name="model">sh.course</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="course_name" />
+                <filter name="course" string="course" context="{'group_by': 'course_name'}" />
+
+            </search>
+        </field>
+    </record>
+
+    <record id="action_view_course" model="ir.actions.act_window">
+        <field name="name">Courses</field>
+        <field name="res_model">sh.course</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'search_default_course':1}</field>
+    </record>
+
+    <menuitem id="sh_course" name="Courses" action="action_view_course" />
+</odoo>
