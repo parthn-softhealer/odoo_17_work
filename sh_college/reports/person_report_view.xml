@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="report_person">
+        <t t-call="web.html_container">
+            <!-- <t t-set="css" t-value="get_resource_url('/sh_practice_wizard/static/src/style/report_style.css')"/>
+            <head>
+                <link t-att-href="css" rel="stylesheet"/>
+            </head> -->
+            <t t-foreach="docs" t-as="doc">
+                <table style="border: 1px solid white; width: 100%; border-collapse: separate; border-spacing: 0;">
+                    <tr>
+                        <td style="border: none; vertical-align: top; padding-right: 20px;">
+                            <h5>
+                                <b>Customer Name and Address</b>
+                            </h5>
+                            <p>
+                                <span t-esc="doc.validity_date"/>
+                            </p>
+                            <!-- <p><span t-esc="doc.partner_id"/></p> -->
+                        </td>
+                        <td style="border: none; vertical-align: top;">
+                            <!-- <h6><b>Date:</b><span t-esc=""/></h6>
+                            <h6><b>Your Reference :</b><span t-esc=""/></h6>
+                            <h6><b>Sales Person :</b><span t-esc=""/></h6>
+                            <h6><b>Payment Term :</b><span t-esc=""/></h6> -->
+                        </td>
+                    </tr>
+                </table>
+                <table  style="border: 1px solid white; width: 100%; border-collapse: separate; border-spacing: 0;">
+                    <tr  style="background-color:#003B73;color:white;">
+                        <td class="text-center" style="padding:10px">
+                            <h5>Sr.</h5>
+                        </td>
+                        <td class="text-center" style="padding:10px">
+                            <h5>Image </h5>
+                        </td>
+                        <td class="text-center" style="padding:10px">
+                            <h5>Description</h5>
+                        </td>
+                        <td class="text-center" style="padding:10px">
+                            <h5>Qty</h5>
+                        </td>
+                        <td class="text-center" style="padding:10px">
+                            <h5>Unite Price</h5>
+                        </td>
+                        <td class="text-center" style="padding:10px">
+                            <h5>Taxes</h5>
+                        </td>
+                        <td class="text-center" style="padding:10px">
+                            <h5>Pricer</h5>
+                        </td>
+                    </tr>
+                    <tr style="border-bottom: 5px solid gray;">
+                        <td class="text-center" style="padding:10px">
+                            <h6>1</h6>
+                        </td>
+                        <td >
+                            <!-- <img t-if="doc.image" t-att-src="'data:image/jpeg;base64,%s' % doc.image.decode('utf-8')" style="max-width: 90px; max-height: 90px;"/> -->
+                        </td>
+                        <td class="text-center" style="padding:10px">
+                            <h6>description jhdfjksdfj</h6>
+                        </td>
+                        <td class="text-center" style="padding:10px">
+                            <h6>1</h6>
+                        </td>
+                        <td class="text-center" style="padding:10px">
+                            <h6>14,579</h6>
+                        </td>
+                        <td class="text-center" style="padding:10px">
+                            <h6>15%</h6>
+                        </td>
+                        <td class="text-center" style="padding:10px">
+                            <h6>14,500</h6>
+                        </td>
+                    </tr>
+                    <tr style="border-bottom: 2px solid gray;">
+                        <td class="text-center" style="padding:10px">
+                            <h6>2</h6>
+                        </td>
+                        <td class="text-center" style="padding:10px">
+                            <h6>image</h6>
+                        </td>
+                        <td class="text-center" style="padding:10px">
+                            <h6>description</h6>
+                        </td>
+                        <td class="text-center" style="padding:10px">
+                            <h6>1</h6>
+                        </td>
+                        <td class="text-center" style="padding:10px">
+                            <h6>14,579</h6>
+                        </td>
+                        <td class="text-center" style="padding:10px">
+                            <h6>15%</h6>
+                        </td>
+                        <td class="text-center" style="padding:10px">
+                            <h6>14,500</h6>
+                        </td>
+                    </tr>
+                </table>
+            </t>
+        </t>
+    </template>
+    <record id="action_report_person" model="ir.actions.report">
+        <field name="name">Person Report</field>
+        <field name="model">sh.person</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">sh_college.report_person</field>
+        <field name="report_file">sh_college.report_person</field>
+        <field name="print_report_name">'Person Report'</field>
+        <field name="binding_model_id" ref="model_sh_person"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

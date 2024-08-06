@@ -1,0 +1,31 @@
+<!-- <odoo>
+    <record id="product_template_list_view_inherit" model="ir.ui.view">
+        <field name="name">product.template.list.view.inherit</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_tree_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="%(action_transfer_notes)d" string="Transfer Notes" type="action" class="btn-primary"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="action_transfer_notes" model="ir.actions.server">
+        <field name="name">Transfer Notes</field>
+        <field name="model_id" ref="product.model_product_template"/>
+        <field name="state">code</field>
+        <field name="code">
+        </field>
+    </record> -->
+
+<odoo>
+    <record model="ir.actions.server" id="sh_office_contact_queue">
+        <field name="name">Manually Import</field>
+        <field name="type">ir.actions.server</field>
+        <field name="model_id" ref="model_product_template" />
+        <field name="binding_model_id" ref="model_product_template" />
+        <field name="state">code</field>
+        <field name="code">
+            action = records._transfer_note_()
+        </field>
+    </record>
+</odoo>

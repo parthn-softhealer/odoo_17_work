@@ -1,0 +1,29 @@
+<odoo>
+    <record id="view_student_search" model="ir.ui.view">
+        <field name="name">view.student.search</field>
+        <field name="model">sh.school.student</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="gender" />
+                <filter string="Male" name="male" domain="[('gender', '=', 'male')]"/>
+                <filter string="Female" name="female" domain="[('gender', '=', 'female')]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Class" name="group_by_gender" context="{'group_by':'gender'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id="search_view_action" model="ir.actions.act_window">
+        <field name="name">My Search View</field>
+        <field name="res_model">sh.school.student</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+        id="my_search_view_menu"
+        name="My Search View"
+        action="search_view_action"
+    />
+
+</odoo>

@@ -1,0 +1,17 @@
+<odoo>
+    <record id="sh_student_mail_view" model="mail.template">
+        <field name="name">Invoice: Sending</field>
+        <field name="model_id" ref="practice.model_new_model" />
+        <field name="email_from">{{ (user.email) }}</field>
+        <field name="partner_to"></field>
+        <field name="subject"></field>
+        <field name="description">Sent to customers with their invoices in attachment</field>
+        <field name="body_html" type="html">
+            <div style="margin: 0px; padding: 0px;">
+                <p style="margin: 0px; padding: 0px; font-size: 13px;">
+                hello world
+                </p>
+            </div>
+        </field>
+    </record>
+</odoo>

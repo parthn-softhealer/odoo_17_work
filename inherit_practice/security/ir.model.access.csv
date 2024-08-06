@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+inherit_practice.access_sh_product_wizard,access_sh_product_wizard,inherit_practice.model_sh_product_wizard,base.group_user,1,1,1,1
+inherit_practice.access_sh_school_student,access_sh_school_student,inherit_practice.model_sh_school_student,base.group_user,1,1,1,1

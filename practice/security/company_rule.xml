@@ -1,0 +1,10 @@
+<odoo>
+    <data noupdate="1">
+        <record id="res_company_example_rule" model="ir.rule">
+            <field name="name">Company Example Multi-Company Rule</field>
+            <field name="model_id" ref="model_sh_model"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+        </record>
+    </data>
+</odoo>

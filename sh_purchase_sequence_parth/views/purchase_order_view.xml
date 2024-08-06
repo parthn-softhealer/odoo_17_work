@@ -1,0 +1,23 @@
+<odoo>
+
+    <record id="purchase_order_inherit_view" model="ir.ui.view">
+        <field name="name">order.line.inherit.view</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='invoice_info']" position="inside">
+                <field name="sequence" />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="seq_request_for_quotation" model="ir.sequence">
+        <field name="name">My Model Sequence</field>
+        <field name="code">request.for.quotation</field>
+        <field name="prefix">PQ</field>
+        <field name="padding">5</field>
+        <field name="number_next">1</field>
+        <field name="number_increment">1</field>
+    </record>
+
+</odoo>

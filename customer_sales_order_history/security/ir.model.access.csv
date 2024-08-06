@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+customer_sales_order_history.access_selection_stage,access_selection_stage,customer_sales_order_history.model_selection_stage,base.group_user,1,1,1,1
+customer_sales_order_history.access_sh_invers,access_sh_invers,customer_sales_order_history.model_sh_invers,base.group_user,1,1,1,1

@@ -1,0 +1,129 @@
+<odoo>
+    <template id="report_bill">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div style="padding:30px">
+                        <div class="row">
+                            <div class="col-6">
+                                <p t-esc="doc.partner_id.name"></p>
+                            </div>
+                            <div class="col-6" style="display:flex;height:100%;justify-content:space-around">
+                                <div class="text-end" style="width:35%">
+                                    <p >Date Orderd : </p>
+                                    <p >Payment Term : </p>
+                                    <p >Validity Date : </p>
+                                    <p >Reference No. : </p>
+                                </div>
+                                <div class="text-end" style="width:65%">
+                                    <p t-esc="doc.date_order"></p>
+                                    <p t-esc="doc.payment_term_id.name"></p>
+                                    <p t-esc="doc.validity_date"></p>
+                                    <p t-esc="doc.id"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <table style="width:100%">
+                            <t t-set="seq" t-value="0"/>
+                            <t t-set="taxable_amount" t-value="0"/>
+                            <t t-foreach="doc.order_line" t-as="record">
+                                <t t-if="seq==0">
+                                    <tr style="background-color:#003B73;color:white;">
+                                        <td class="text-center" style="padding:10px;border-radius :20px 0 0 0">
+                                            <h6>Sr.</h6>
+                                        </td>
+                                        <td class="text-center" style="padding:10px;">
+                                            <h6>Product</h6>
+                                        </td>
+                                        <td class="text-center" style="padding:10px;">
+                                            <h6>Description</h6>
+                                        </td>
+                                        <td class="text-center" style="padding:10px;">
+                                            <h6>Image.</h6>
+                                        </td>
+                                        <td class="text-center" style="padding:10px;">
+                                            <h6>Qty</h6>
+                                        </td>
+                                        <td class="text-center" style="padding:10px;">
+                                            <h6>Unite Price</h6>
+                                        </td>
+                                        <td class="text-center" style="padding:10px;">
+                                            <h6>Taxes</h6>
+                                        </td>
+                                        <td class="text-center" style="padding:10px;">
+                                            <h6>Amount</h6>
+                                        </td>
+                                        <td class="text-center" style="padding:10px;border-radius :0 15px 0 0">
+                                            <h6>Taxable Amount</h6>
+                                        </td>
+                                    </tr>
+                                </t>
+                                <t t-set="seq" t-value="seq + 1"/>
+                                <tr >
+                                    <td class="text-center" style="padding:10px;">
+                                        <t t-out="seq"/>
+                                    </td>
+                                    <td class="text-center" style="padding:10px;">
+                                        <t t-out="record.product_id.name"/>
+                                    </td>
+                                    <td class="text-center" style="padding:10px;">
+                                        <t t-out="record.name"/>
+                                    </td>
+                                    <td style="padding: 10px; text-align: center;">
+                                        <img t-if="record.product_id.image_1920" t-att-src="'data:image/jpeg;base64,%s' % record.product_id.image_1920.decode('utf-8')" style="max-width: 50px; max-height: 50px;"/>
+                                    </td>
+                                    <td class="text-center" style="padding:10px">
+                                        <t t-out="record.product_uom_qty"/>
+                                    </td>
+                                    <td class="text-center" style="padding:10px">
+                                        <t t-out="record.price_subtotal/record.product_uom_qty"/>
+                                    </td>
+                                    <td class="text-center" style="padding:10px;">
+                                        <t t-foreach="record.tax_id" t-as="tax">
+                                            <t class="text-center" t-esc="tax.name"/>
+                                        </t>
+                                    </td>
+                                    <td class="text-center" style="padding:10px">
+                                        <t t-out="record.price_subtotal"/>
+                                    </td>
+                                    <t t-set="taxable_amount" t-value="record.price_subtotal + (record.price_subtotal * record.tax_id.amount)/100 "/>
+                                    <td class="text-center" style="padding:10px">
+                                        <t t-out="taxable_amount"/>
+                                    </td>
+                                    <t t-set="tabable_amount" t-value="0"/>
+                                </tr>
+                            </t>
+                        </table>
+                        <table style="width:100%;background-color:#003B73;color:white;border-radius :0px 0px 20px 20px ;">
+                            <td class="text-left" style="padding:10px;border-radius :0 0 15px 0">
+                                <h6>Payment Term :
+                                    <t t-esc="doc.payment_term_id.name"/>
+                                </h6>
+                            </td>
+                            <td class="text-end" style="padding:10px;">
+                                <h6>Untaxed Amount :
+                                    <t t-esc="doc.amount_untaxed"/>
+                                </h6>
+                            </td>
+                            <td class="text-end" style="padding:10px;border-radius :0 0 0 15px">
+                                <h6>Total Payment :
+                                    <t t-esc="doc.amount_total"/>
+                                </h6>
+                            </td>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+    <record id="sh_bill_final_report" model="ir.actions.report">
+        <field name="name">bill Template</field>
+        <field name="model">sale.order</field>
+        <field name="report_type">qweb-html</field>
+        <field name="report_name">custom_report.report_bill</field>
+        <field name="report_file">custom_report.report_bill</field>
+        <field name="print_report_name">'Customer_Name_'</field>
+        <field name="binding_model_id" ref="sale.model_sale_order"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

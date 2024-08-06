@@ -1,0 +1,29 @@
+<odoo>
+    <record id="wizard_product_view_form" model="ir.ui.view">
+        <field name="name">wizard.product.view.form</field>
+        <field name="model">sh.product.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Wizard">
+                <sheet>
+                    <group>
+                        <field name="product_tmpl_id" />
+                    </group>
+                    <footer>
+                        <button name="update_sale_order_line_record" string="Quick Replace" type="object"  class="btn-primary"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>    
+
+    
+    <record id="open_wizard_view_action" model="ir.actions.act_window">
+        <field name="name">Select Product</field>
+        <field name="res_model">sh.product.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    
+
+</odoo>

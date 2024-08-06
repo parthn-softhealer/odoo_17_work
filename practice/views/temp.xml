@@ -1,0 +1,39 @@
+<odoo>
+    <record id="view_form" model="ir.ui.view">
+        <field name="name">view.form</field>
+        <field name="model">new.model</field>
+        <field name="arch" type="xml">
+            <form string="Form">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="email"/>
+                        <field name="user_id"/>
+                        <button name="action_send_email" type="object" string="Send Email" class="oe_highlight"/>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="_view_tree" model="ir.ui.view">
+        <field name="name">.view.tree</field>
+        <field name="model">new.model</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="name" optional="hide"/>
+
+            </tree>
+        </field>
+    </record>
+    <record id="practice_action" model="ir.actions.act_window">
+        <field name="name">Practice</field>
+        <field name="res_model">new.model</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="model_view" name="Practice" action="practice_action" />
+</odoo>

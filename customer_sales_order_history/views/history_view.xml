@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="sale_order_add_option" model="ir.ui.view">
+        <field name="name">sale.order.option</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook/page[@name='order_lines']" position="after">
+                <page string="Order History" name="order_history">
+                    <field name="order_history_ids" context="{'default_partner_id': partner_id}" mode="tree">
+                        <tree>
+                            <field name="is_check" column_invisible="1" />
+                            <field name="name"/>
+                            <field name="date"/>
+                            <field name="product"/>
+                            <field name="pricelist"/>
+                            <field name="price"/>
+                            <field name="newprice"/>
+                            <field name="quantity"/>
+                            <field name="unit"/>
+                            <field name="discount"/>
+                            <field name="subtotal"/>
+                            <field name="status" widget="badge"/>
+                            <button type="object" name="action_reorder" icon="fa-refresh" invisible="not is_check" />
+                            <button type="object" name="action_view_order" icon="fa-eye"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

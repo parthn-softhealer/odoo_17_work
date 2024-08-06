@@ -1,0 +1,32 @@
+<odoo>
+    <record id="checking_view_form" model="ir.ui.view">
+        <field name="name">checking.view.form</field>
+        <field name="model">sh.checking</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <field name="person_id" string="Name"/>
+                        <field name="person_type" string="Person Type"/>
+                        <field name="person_mobile" string="Mobile" invisible="person_type in [False ,'student']"/>
+                        <field name="person_email" string="Email" invisible="person_type in [False , 'student']"/>
+                        <field name="person_hobbies" widget="many2many_tags" string="Hobbies" invisible="person_type in [False , 'student']"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="checking_action" model="ir.actions.act_window">
+        <field name="name">Checking</field>
+        <field name="res_model">sh.checking</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+        id="checking_menu"
+        name="Checking"
+        action="checking_action"
+        parent="sh_person_menu"
+   />
+</odoo>

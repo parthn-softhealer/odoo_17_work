@@ -1,0 +1,47 @@
+<odoo>
+
+    <record id="sale_order_line_view_form" model="ir.ui.view">
+        <field name="name">sale.order.line.view.form</field>
+        <field name="model">sh.sale.order.line</field>
+        <field name="arch" type="xml">
+            <form string="sale_order_line">
+                <sheet>
+                    <group>
+                        <field name="product_id" string="Product Name" />
+                        <field name="qty" string="Qty"/>
+                        <field name="price" string="Price"/>
+                        <field name="tax_id" string="Taxes" />
+                        <field name="total_cost" string="Total Cost"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record id="sale_order_line_view_tree" model="ir.ui.view">
+        <field name="name">sale.order.line.view.tree</field>
+        <field name="model">sh.sale.order.line</field>
+        <field name="arch" type="xml">
+            <tree string="sale_order_line">
+                <field name="product_id" string="Product Name" />
+                <field name="qty" string="Qty"/>
+                <field name="price" string="Price"/>
+                <field name="tax_id" string="Taxes"  />
+                <field name="total_cost" string="Total Cost"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="sale_order_line_action" model="ir.actions.act_window">
+        <field name="name">Sale Order Line</field>
+        <field name="res_model">sh.sale.order.line</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+        id="sh_sale_order_line_menu"
+        name="Sale Order Line"
+        action="sale_order_line_action"
+        parent="sh_partner_menu"
+        />
+</odoo>

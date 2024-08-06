@@ -1,0 +1,122 @@
+<odoo>
+    <record id="tree_inherit_view" model="ir.ui.view">
+        <field name="name">tree.inherit.view</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_case_tree_view_oppor"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="before">
+                <field name="seq" readonly="1" />
+            </xpath>
+        </field>
+    </record>
+    <record id="form_inherit_view" model="ir.ui.view">
+        <field name="name">form.inherit.view</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="before">
+                <h1>
+                    <field name="seq" readonly="1" />
+                </h1>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="sh_crm_lead_graph_view" model="ir.ui.view">
+        <field name="name">sh.crm.lead.graph.view</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_graph"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='stage_id']" position="replace">
+                <field name="seq" />
+            </xpath>
+            <xpath expr="//field[@name='user_id']" position="replace">
+                <field name="stage_id" />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="kanban_inherit_view" model="ir.ui.view">
+        <field name="name">kanban.inherit.view</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_case_kanban_view_leads"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('oe_kanban_details')]" position="before">
+                <strong class="o_kanban_record_title">
+                    <field name="seq" />
+                </strong>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="calender_inherit_view" model="ir.ui.view">
+        <field name="name">calender.inherit.view</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_case_calendar_view_leads"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='expected_revenue']" position="before">
+                <field name="seq" string="Number" />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="pivot_inherit_view" model="ir.ui.view">
+        <field name="name">pivot.inherit.view</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_pivot"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='create_date']" position="replace">
+                <field name="seq" type="row" />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="sh_crm_sequence_view_activity" model="ir.ui.view">
+        <field name="name">sh_crm_sequence.view.activity</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_activity" />
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='name']" position="replace">
+                <field name="seq" />
+            </xpath>
+
+        </field>
+    </record>
+    <!-- /////////////////// Lead Changes ///////////////////////////// -->
+    <record id="lead_view_tree_inherit" model="ir.ui.view">
+        <field name="name">lead.view.tree.inherit</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_case_tree_view_leads"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="before">
+                <field name="seq" readonly="1"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="lead_view_kanban_inherit" model="ir.ui.view">
+        <field name="name">lead.view.kanban.inherit</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.view_crm_lead_kanban"/>
+        <field name="arch" type="xml">
+            <xpath expr="//templates/t[@t-name='kanban-box']/div[1]/div[1]" position="before">
+                <strong>
+                    <field name="seq" readonly="1"/>
+                </strong>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="lead_view_calendar_view" model="ir.ui.view">
+        <field name="name">lead.view.calendar</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_case_calendar_view_leads"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='expected_revenue']" position="before">
+                <field name="seq" />
+            </xpath>
+        </field>
+    </record>
+</odoo>

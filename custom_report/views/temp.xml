@@ -1,0 +1,50 @@
+<odoo>
+    <!-- <record id="view_form" model="ir.ui.view">
+        <field name="name">view.form</field>
+        <field name="model">sh.</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <field name="" string=""/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record id="view_tree" model="ir.ui.view">
+        <field name="name">view.tree</field>
+        <field name="model">sh.</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="" string=""/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="_action" model="ir.actions.act_window">
+        <field name="name"></field>
+        <field name="res_model">sh.</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+        id=""
+        name=""
+        action="_action"
+    /> -->
+
+    <record id="sale_order_inherit_view" model="ir.ui.view">
+        <field name="name">sale.order.inherit.view</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='310']" position="replace">
+                <button string="Open Wizard" name="%(custom_report.wizard_open_action)d" type="action" class="oe_highlight"/>
+            </xpath>
+            
+        </field>
+    </record>
+
+</odoo>

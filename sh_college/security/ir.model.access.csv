@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+sh_college.access_sh_person,access_sh_person,sh_college.model_sh_person,base.group_user,1,1,1,1
+sh_college.access_sh_hobby,access_sh_hobby,sh_college.model_sh_hobby,base.group_user,1,1,1,1
+sh_college.access_sh_checking,access_sh_checking,sh_college.model_sh_checking,base.group_user,1,1,1,1
